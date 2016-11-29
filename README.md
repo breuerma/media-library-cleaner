@@ -35,7 +35,7 @@ If you would like to start a scan immediately then use
 `java -jar target/mediaregistry --start-initial-scan`
 
 and lean back as it will take some time (15h on my 6T repo with 15k files).
-
+ 
 After the scan has been finished you may see all files which are very very
 likely duplicates under:
 
