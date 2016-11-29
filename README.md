@@ -47,7 +47,7 @@ application.properties.
 
 In application properties the following variables can be edited:
 
-	spring.datasource.url=jdbc:postgresql://picard.local/moviescan
+	spring.datasource.url=jdbc:postgresql://dbhost.local/moviescan
 	spring.datasource.username=moviescan
 	spring.datasource.password=moviescan
 
