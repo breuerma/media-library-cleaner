@@ -17,6 +17,7 @@
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
+		<jgitflow.plugin.version>1.0-m5.1</jgitflow.plugin.version>
 		<!-- runtime -->
 		<spring.boot.version>1.4.2.RELEASE</spring.boot.version>
 		<mirror.version>1.5.1</mirror.version>
@@ -59,6 +60,21 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>external.atlassian.jgitflow</groupId>
+				<artifactId>jgitflow-maven-plugin</artifactId>
+				<version>${jgitflow.plugin.version}</version>
+				<configuration>
+					<flowInitContext>
+						<masterBranchName>master</masterBranchName>
+						<developBranchName>develop</developBranchName>
+						<featureBranchPrefix>feature_</featureBranchPrefix>
+						<releaseBranchPrefix>release_</releaseBranchPrefix>
+						<hotfixBranchPrefix>hotfix_</hotfixBranchPrefix>
+						<versionTagPrefix>version_</versionTagPrefix>
+					</flowInitContext>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -175,7 +191,7 @@
 					<effort>Max</effort>
 					<threshold>Low</threshold>
 				</configuration>
-			</plugin> 
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>taglist-maven-plugin</artifactId>
