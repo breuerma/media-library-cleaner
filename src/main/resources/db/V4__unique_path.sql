@@ -1,0 +1,1 @@
+ALTER TABLE moviefile add unique(path);

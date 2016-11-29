@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Media Duplicate Registry</h1>
+	<p th:text="'Registered ' + ${numberOfMediaFiles} + ' media files'" />
+	<p th:text="${duplicatesListSize} + ' md5 sums are shared by more than one file'" />
+	<form action="/delete" method="POST">
+		<input type="submit" value="Remove"/>
+		<table border="1">
+			<tr>
+				<td align="center">Files</td>
+				<td align="center">Remove</td>
+				<!-- <td align="center">Remove And Link</td>  -->
+			</tr>
+			<tr th:each="duplicates,iterationStatus : ${duplicatesList}">
+				<td>
+					<table>
+						<tr th:each="file : ${duplicates.duplicateFileList}">
+							<td align="left" valign="top" th:text="${file.path}">Path</td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					<table>
+						<tr th:each="file : ${duplicates.duplicateFileList}">
+							<td align="left"><input type="checkbox" name="remove"
+								th:value="${file.id}" /></td>
+						</tr>
+					</table>
+				</td>
+				<!-- 
+				<td>
+					<table>
+						<tr th:each="file : ${duplicates.duplicateFileList}">
+							<td align="left"><input type="checkbox" name="removeAndLink"
+								th:value="${file.id}" /></td>
+						</tr>
+					</table>
+				</td>
+				 -->
+			</tr>
+		</table>
+		<input type="submit" value="Remove"/>
+	</form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>File Removal Result</h1>
+	<p
+		th:text="'Successfully removed ' + ${report.successCount} + ' media files with a size of ' + ${report.formattedRemovalTotalFileSize}" />
+	<p
+		th:text="'Failed to remove ' + ${report.failureCount} + ' media files'" />
+	<p>
+		<a href="/">Back to Index</a>
+	</p>
+	<h2>Files removed successfully</h2>
+	<table border="1">
+		<tr>
+			<td align="center">Path</td>
+			<td align="center">Size</td>
+		</tr>
+		<tr th:each="removalResult,iterationStatus : ${report.successList}">
+			<td th:text="${removalResult.path}" />
+			<td th:text="${removalResult.formattedSize}" />
+		</tr>
+	</table>
+	<p>
+		<a href="/">Back to Index</a>
+	</p>
+	<h2>Files which could not be removed</h2>
+	<table border="1">
+		<tr>
+			<td align="center">Path</td>
+			<td align="center">Reason</td>
+		</tr>
+		<tr th:each="removalResult,iterationStatus : ${report.failureList}">
+			<td th:text="${removalResult.path}" />
+			<td th:text="${removalResult.failureReason}" />
+		</tr>
+	</table>
+	<p>
+		<a href="/">Back to Index</a>
+	</p>
+</body>
+</html>

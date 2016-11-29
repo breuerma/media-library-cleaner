@@ -1,0 +1,1 @@
+ALTER TABLE checksum add unique(md5sum);
