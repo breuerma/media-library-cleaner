@@ -10,7 +10,7 @@ suffixes. You may then access a tiny (and very ugly) web frontend under
 http://yourhost.domain:8080/ and decide whether you would like to remove the
 files which share the same MD5 sum.
 The use is merely to find duplicate media files in huge libraries and being
-able to easily remove the unwantend ones.
+able to remove the unwantend ones easily.
 
 ## Usage
 
