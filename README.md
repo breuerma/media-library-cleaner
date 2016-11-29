@@ -1,7 +1,8 @@
 # Media Library Cleaner
 
 This project started as demo project for showing how to do some stuff with
-Spring Boot. It has proven quite useful to me so I decided to push it here.
+Spring Boot. It has proven to be quite useful to me so I decided to push it 
+online.
 
 ## What it does
 
@@ -43,6 +44,13 @@ http://yourhost.domain:8080/
 The scan will be repeated according to the settings in the
 application.properties.
 
+### Chosing a different port
+Either modify the application.properties before building the project or just supply
+
+`--server.port=12080`
+
+on the command line.
+
 ## Settings:
 
 In application properties the following variables can be edited:
@@ -56,6 +64,9 @@ In application properties the following variables can be edited:
 	flyway.enabled=true
 	flyway.check-location=true
 	flyway.locations=classpath:/db
+
+	# http Server port:
+	#server.port=12080
 
 	# Your media directory:
 	mediaregistry.directory=/home/media/
