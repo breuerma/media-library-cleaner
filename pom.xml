@@ -13,16 +13,27 @@
 	</parent>
 
 	<properties>
+		<!-- build -->
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
+		<!-- runtime -->
 		<spring.boot.version>1.4.2.RELEASE</spring.boot.version>
 		<mirror.version>1.5.1</mirror.version>
-		<maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
 		<apache.commons.lang.version>3.3.2</apache.commons.lang.version>
 		<apache.commons.io.version>2.5</apache.commons.io.version>
 		<apache.commons.dbcp.version>1.2.2</apache.commons.dbcp.version>
-		<hammurapi.plugin.version>1.0</hammurapi.plugin.version>
+		<!-- reporting -->
 		<jacoco.plugin.version>0.7.7.201606060606</jacoco.plugin.version>
+		<site.plugin.version>3.5.1</site.plugin.version>
+		<projectinfo.plugin.version>2.9</projectinfo.plugin.version>
+		<dependency.plugin.version>2.10</dependency.plugin.version>
+		<jdepend.plugin.version>2.0</jdepend.plugin.version>
+		<jxr.plugin.version>2.5</jxr.plugin.version>
+		<pmd.plugin.version>3.6</pmd.plugin.version>
+		<surefire.report.plugin.version>2.19.1</surefire.report.plugin.version>
+		<findbugs.plugin.version>3.0.3</findbugs.plugin.version>
+		<taglist.plugin.version>2.4</taglist.plugin.version>
 	</properties>
 
 	<build>
@@ -96,6 +107,7 @@
 		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -110,18 +122,19 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>3.5.1</version>
+				<version>${site.plugin.version}</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>2.9</version>
+				<version>${projectinfo.plugin.version}</version>
 			</plugin>
 			<!-- Checkstyle is ommitted as the eclipse settings enforce the use of 
 				naming and coding rules. -->
+			<!-- Javadoc plugin crashes for some strange reasons. -->
 			<plugin>
 				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.10</version>
+				<version>${dependency.plugin.version}</version>
 				<configuration>
 					<repositoryUrl>--</repositoryUrl>
 					<artifactItems />
@@ -130,21 +143,15 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jdepend-maven-plugin</artifactId>
-				<version>2.0</version>
+				<version>${jdepend.plugin.version}</version>
 			</plugin>
-			<!-- 
-			<plugin>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.4</version>
-			</plugin>
-			 -->
 			<plugin>
 				<artifactId>maven-jxr-plugin</artifactId>
-				<version>2.5</version>
+				<version>${jxr.plugin.version}</version>
 			</plugin>
 			<plugin>
 				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.6</version>
+				<version>${pmd.plugin.version}</version>
 				<configuration>
 					<targetJdk>1.8</targetJdk>
 					<format>xml</format>
@@ -155,7 +162,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>2.19.1</version>
+				<version>${surefire.report.plugin.version}</version>
 				<configuration>
 					<showSuccess>true</showSuccess>
 				</configuration>
@@ -163,7 +170,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>3.0.3</version>
+				<version>${findbugs.plugin.version}</version>
 				<configuration>
 					<effort>Max</effort>
 					<threshold>Low</threshold>
@@ -172,7 +179,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>taglist-maven-plugin</artifactId>
-				<version>2.4</version>
+				<version>${taglist.plugin.version}</version>
 				<configuration>
 					<tags>
 						<tag>@deprecated</tag>
