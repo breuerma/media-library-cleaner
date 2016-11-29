@@ -1,7 +1,8 @@
 # Media Library Cleaner
 
 This project started as demo project for showing how to do some stuff with
-Spring Boot. It has proven quite useful to me so I decided to push it here.
+Spring Boot. It has proven to be quite useful to me so I decided to push it 
+online.
 
 ## What it does
 
@@ -10,7 +11,7 @@ suffixes. You may then access a tiny (and very ugly) web frontend under
 http://yourhost.domain:8080/ and decide whether you would like to remove the
 files which share the same MD5 sum.
 The use is merely to find duplicate media files in huge libraries and being
-able to easily remove the unwantend ones.
+able to remove the unwantend ones easily.
 
 ## Usage
 
@@ -33,8 +34,8 @@ If you would like to start a scan immediately then use
 
 `java -jar target/mediaregistry --start-initial-scan`
 
-and lean back as it will take some time (15h on my 6T repo with 15k files)
-
+and lean back as it will take some time (15h on my 6T repo with 15k files).
+ 
 After the scan has been finished you may see all files which are very very
 likely duplicates under:
 
@@ -43,26 +44,30 @@ http://yourhost.domain:8080/
 The scan will be repeated according to the settings in the
 application.properties.
 
+### Chosing a different port
+Either modify the application.properties before building the project or just supply
+
+`--server.port=12080`
+
+on the command line.
+
 ## Settings:
 
 In application properties the following variables can be edited:
 
-	spring.datasource.url=jdbc:postgresql://picard.local/moviescan
+	spring.datasource.url=jdbc:postgresql://dbhost.local/moviescan
 	spring.datasource.username=moviescan
 	spring.datasource.password=moviescan
-	
+
 	logging.file=mediaregistry.log
-	
+
 	flyway.enabled=true
 	flyway.check-location=true
 	flyway.locations=classpath:/db
-	
-	# You may change the port like that:
+
+	# http Server port:
 	#server.port=12080
-		
-	# Uncomment for using the native MD5 generator (requires a unix system with a md5sum command):
-	#spring.profiles.active=native
-	
+
 	# Your media directory:
 	mediaregistry.directory=/home/media/
 	# The scan depth - that is the number of directories stacked into each other:
@@ -72,10 +77,10 @@ In application properties the following variables can be edited:
 	# Be careful: Setting threads to n will start n md5sum processes on your system.
 	# As md5sum is heavily reading from your harddisk or SDD you should not set the value too high: 
 	mediaregistry.threads=2
-	
-	# The following settings are only considered when the "native" profile is active
-	
 	# The path of the md5sum command:
 	mediaregistry.md5sum.command=/usr/bin/md5sum
 	# Use binary scanning:
 	mediaregistry.md5sum.parameters=-b
+	# The path of the rm command:
+	mediaregistry.rm.command=/bin/rm
+
