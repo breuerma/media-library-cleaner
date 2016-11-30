@@ -28,11 +28,11 @@ Now create a jar with
 
 Then you may run that jar just from the command line.
 
-`java -jar target/mediaregistry`
+`java -jar target/mediaregistry-0.0.1-SNAPSHOT.jar`
 
 If you would like to start a scan immediately then use
 
-`java -jar target/mediaregistry --start-initial-scan`
+`java -jar target/mediaregistry-0.0.1-SNAPSHOT.jar --start-initial-scan`
 
 and lean back as it will take some time (15h on my 6T repo with 15k files).
  
